@@ -86,7 +86,14 @@ fun NoteEditorScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(if (isNewNote) "New Note" else "Edit Note") },
+                title = {
+                    Text(
+                        if (isNewNote) "New Note" else "Edit Note",
+                        color = Color.Black.copy(alpha = 0.87f),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
@@ -117,7 +124,10 @@ fun NoteEditorScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = noteColor
+                    containerColor = noteColor,
+                    titleContentColor = Color.Black.copy(alpha = 0.87f),
+                    navigationIconContentColor = Color.Black.copy(alpha = 0.87f),
+                    actionIconContentColor = Color.Black.copy(alpha = 0.87f)
                 )
             )
         }
@@ -138,7 +148,8 @@ fun NoteEditorScreen(
                     Text(
                         "Title",
                         style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black.copy(alpha = 0.45f)
                     )
                 },
                 textStyle = MaterialTheme.typography.titleLarge.copy(
@@ -164,7 +175,8 @@ fun NoteEditorScreen(
                 placeholder = {
                     Text(
                         "Start writing...",
-                        style = MaterialTheme.typography.bodyLarge
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color.Black.copy(alpha = 0.45f)
                     )
                 },
                 textStyle = MaterialTheme.typography.bodyLarge.copy(
@@ -178,31 +190,50 @@ fun NoteEditorScreen(
                 )
             )
 
-            LazyRow(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    .background(noteColor.copy(alpha = 0.7f))
+                    .padding(vertical = 12.dp)
             ) {
-                items(NoteColors.size) { index ->
-                    Box(
-                        modifier = Modifier
-                            .size(36.dp)
-                            .clip(CircleShape)
-                            .background(NoteColors[index])
-                            .then(
-                                if (index == selectedColor) {
-                                    Modifier.border(
-                                        width = 3.dp,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        shape = CircleShape
-                                    )
-                                } else {
-                                    Modifier
-                                }
-                            )
-                            .clickable { selectedColor = index }
-                    )
+                Text(
+                    text = "Color",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.Black.copy(alpha = 0.6f),
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+                )
+                LazyRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    items(NoteColors.size) { index ->
+                        Box(
+                            modifier = Modifier
+                                .size(40.dp)
+                                .clip(CircleShape)
+                                .background(NoteColors[index])
+                                .border(
+                                    width = 2.dp,
+                                    color = Color.Black.copy(alpha = 0.2f),
+                                    shape = CircleShape
+                                )
+                                .then(
+                                    if (index == selectedColor) {
+                                        Modifier.border(
+                                            width = 3.dp,
+                                            color = MaterialTheme.colorScheme.primary,
+                                            shape = CircleShape
+                                        )
+                                    } else {
+                                        Modifier
+                                    }
+                                )
+                                .clickable { selectedColor = index }
+                        )
+                    }
                 }
             }
         }

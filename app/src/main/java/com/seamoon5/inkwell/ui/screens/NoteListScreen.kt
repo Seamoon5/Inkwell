@@ -207,7 +207,8 @@ fun NoteCard(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    color = Color.Black.copy(alpha = 0.87f)
                 )
                 Spacer(modifier = Modifier.height(8.dp))
             }
@@ -217,7 +218,8 @@ fun NoteCard(
                     text = note.content,
                     style = MaterialTheme.typography.bodyMedium,
                     maxLines = if (note.title.isBlank()) 8 else 5,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    color = Color.Black.copy(alpha = 0.74f)
                 )
             }
 
@@ -231,7 +233,7 @@ fun NoteCard(
                 Text(
                     text = formatDate(note.updatedAt),
                     style = MaterialTheme.typography.labelSmall,
-                    color = Color.Gray
+                    color = Color.Black.copy(alpha = 0.5f)
                 )
 
                 if (showActions) {

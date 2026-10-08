@@ -11,12 +11,12 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val NoteColors = listOf(
-    Color(0xFFFFF8E1),
-    Color(0xFFFCE4EC),
-    Color(0xFFE8F5E9),
-    Color(0xFFE3F2FD),
-    Color(0xFFF3E5F5),
-    Color(0xFFFFF3E0),
-    Color(0xFFE0F7FA),
-    Color(0xFFF1F8E9)
+    Color(0xFFFFE082),
+    Color(0xFFF8BBD0),
+    Color(0xFFA5D6A7),
+    Color(0xFF90CAF9),
+    Color(0xFFCE93D8),
+    Color(0xFFFFCC80),
+    Color(0xFF80DEEA),
+    Color(0xFFC5E1A5)
 )
