@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Every note, image reference and setting is included so Google's automatic
+  device backup can restore Inkwell after a reinstall or a new phone.
+-->
+<full-backup-content>
+    <include domain="database" path="inkwell_database" />
+    <include domain="sharedpref" path="." />
+</full-backup-content>
